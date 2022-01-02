@@ -1,11 +1,29 @@
 package main
 
-import (
-	"fmt"
-	"github.com/exxxception/learn-go/pkg"
-)
+import "fmt"
+
+type Agent struct {
+	name   string
+	sex    string
+	age    int
+	salary int
+}
+
+func newAgent(name, sex string, age, salary int) Agent {
+	return Agent{
+		name:   name,
+		sex:    sex,
+		age:    age,
+		salary: salary,
+	}
+}
+
+func (a Agent) getInfo() string {
+	return fmt.Sprintf("Agent: %s\nAge: %d\nSalary: %d\n", a.name, a.age, a.salary)
+}
 
 func main() {
-	result := pkg.ToCamelCase("Hi -My name_is VLad")
-	fmt.Println(result)
+	agent1 := newAgent("Rick", "M", 21, 100)
+
+	fmt.Printf("%s\n", agent1.getInfo())
 }
